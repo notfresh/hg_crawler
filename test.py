@@ -4,5 +4,5 @@ import sys
 
 if __name__ == '__main__':
     execute([
-        "scrapy", "crawl", "hg2"
+        "scrapy", "crawl", "cnblogs"
     ])

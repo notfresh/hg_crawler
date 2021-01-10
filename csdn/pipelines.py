@@ -27,6 +27,18 @@ class CsdnWriteJsonPipeline:
         self.writer.close()
 
 
+class CsdnWriteJson2Pipeline:
+    def open_spider(self, spider):
+        self.writer = open(spider.json_save_file, mode='w+', encoding='utf-8')
+
+    def process_item(self, item, spider):
+        self.writer.write('{}\n'.format(json.dumps(item, ensure_ascii=False)))
+        return item
+
+    def close_spider(self, spider):
+        self.writer.close()
+
+
 class CsdnWriteTextPipeline:
 
     def process_item(self, item, spider):
@@ -52,7 +64,6 @@ class CsdnWriteTextPipeline:
             )
 
         return item
-
 
 class Csdn_ES_Pipeline:
 
